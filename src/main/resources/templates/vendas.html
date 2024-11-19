@@ -1,0 +1,47 @@
+<head>
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
+    <title>Vendas</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
+    <script src="https://kit.fontawesome.com/006642858d.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Handlee&display=swap" rel="stylesheet">
+</head>
+</head>
+<body>
+	<div th:replace="fragmentos/fragmentos :: cabecalho"></div>
+    <h1>Lista de Vendas</h1>
+    <a href="/vendas/novo">Adicionar Nova Venda</a>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome do Carro</th>
+                <th>Marca</th>
+                <th>Preço</th>
+                <th>Comissão</th>
+                <th>Cliente</th>
+                <th>Vendedor</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="venda : ${vendas}">
+                <td th:text="${venda.id}"></td>
+                <td th:text="${venda.nomeCarro}"></td>
+                <td th:text="${venda.marcaCarro}"></td>
+                <td th:text="${venda.precoCarro}"></td>
+                <td th:text="${venda.comissao}"></td>
+                <td th:text="${venda.cliente.nome}"></td>
+                <td th:text="${venda.vendedor.nome}"></td>
+                <td>
+                    <a th:href="@{/vendas/{id}/editar(id=${venda.id})}">Editar</a>
+                    <a th:href="@{/vendas/{id}/excluir(id=${venda.id})}" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
