@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
+    <title>Cadastrar Vendedor</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
+    <script src="https://kit.fontawesome.com/006642858d.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Handlee&display=swap" rel="stylesheet">
+</head>
+</head>
+<body>
+	<div th:replace="fragmentos/fragmentos :: cabecalho"></div>
+    <h1>Cadastrar Vendedor</h1>
+    <form action="/vendedores" method="post" th:object="${vendedor}">
+    <input type="hidden" th:field="*{id}">
+        <label>Nome:</label>
+        <input type="text" name="nome" th:value="${vendedor.nome}" required/><br/>
+        <label>Email:</label>
+        <input type="email" name="email" th:value="${vendedor.email}" required/><br/>
+        <button type="submit">Salvar</button>
+    </form>
+</body>
+</html>
